@@ -1,13 +1,17 @@
-import { List, ListItem, HStack, Image, Text } from "@chakra-ui/react";
+import { List, ListItem, HStack, Image, Text, Spinner } from "@chakra-ui/react";
 import useGenres from "../hooks/useGenres";
 import getCroppedImageUrl from "../services/image-url";
 
 const GenreList = () => {
-  const { data } = useGenres();
+  const { data, isLoading, error } = useGenres();
 
-  function getCroppedImage(image_background: string): string | undefined {
-    throw new Error("Function not implemented.");
-  }
+  if (error) return null;
+
+  if (isLoading) return <Spinner />;
+
+  // function getCroppedImage(image_background: string): string | undefined {
+  //   throw new Error("Function not implemented.");
+  // }
 
   return (
     <List>
